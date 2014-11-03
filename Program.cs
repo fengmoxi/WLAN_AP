@@ -32,7 +32,7 @@ namespace MyWifi
                 //如果是管理员，则直接运行 
 
                 Application.EnableVisualStyles();
-                //Application.Run(new Passwd());//如要去除密码功能，请注释掉本行
+                Application.Run(new Passwd());//如要去除密码功能，请注释掉本行
                 Application.Run(new MainForm());
             }
             else

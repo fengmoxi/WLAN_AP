@@ -185,7 +185,7 @@ namespace MyWifi
 
         private void button1_Click(object sender, EventArgs e)
         {
-            FileStream fs = new FileStream("wlanap.bat", FileMode.Create);
+            FileStream fs = new FileStream("开启无线AP.bat", FileMode.Create);
             StreamWriter sw = new StreamWriter(fs);
             //开始写入
             sw.Write("@netsh wlan set hostednetwork mode=allow ssid=" + textName.Text + " key=" + textPsw.Text + "\r\n");
@@ -195,7 +195,16 @@ namespace MyWifi
             //关闭流
             sw.Close();
             fs.Close();
-
+            fs = new FileStream("禁用并关闭无线AP.bat", FileMode.Create);
+            sw = new StreamWriter(fs);
+            //开始写入
+            sw.Write("@netsh wlan set hostednetwork mode=disallow\r\n");
+            sw.Write("@netsh wlan stop hostednetwork");
+            //清空缓冲区
+            sw.Flush();
+            //关闭流
+            sw.Close();
+            fs.Close();
         }    
     }
 }
